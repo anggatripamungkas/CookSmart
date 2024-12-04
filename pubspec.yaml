@@ -1,0 +1,28 @@
+name: aplikasi_resep_masakan
+description: "Aplikasi untuk menemukan resep masakan berdasarkan bahan dan preferensi diet."
+
+publish_to: 'none' # Tidak dipublikasikan ke pub.dev
+
+version: 0.1.0
+
+environment:
+  sdk: ^3.5.3
+
+dependencies:
+  flutter:
+    sdk: flutter
+  sqflite: ^2.2.0              # Untuk SQLite (database lokal)
+  path: ^1.8.3                 # Untuk menentukan path file database
+  http: ^1.2.2                 # Untuk melakukan permintaan HTTP ke Spoonacular API
+  provider: ^6.0.5             # Untuk manajemen state aplikasi
+  shared_preferences: ^2.0.15  # Untuk menyimpan data kecil seperti pengaturan pengguna
+  #connectivity_plus: ^6.1.0
+  
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+
+flutter:
+  uses-material-design: true
+
