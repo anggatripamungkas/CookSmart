@@ -271,9 +271,9 @@ class _RecipeScreenState extends State<RecipeScreen> {
                     ),
                   ),
                   const SizedBox(height: 10),
-                  Text(
+                  const Text(
                     'Informasi Nutrisi & Bahan-Bahan :',
-                    style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 10),
                   FutureBuilder<List<String>>(
@@ -343,6 +343,9 @@ class _RecipeScreenState extends State<RecipeScreen> {
                                   final ingredientsList = snapshot.data ?? [];
                                   _addToShoppingList(ingredientsList);
                                 },
+                                style: ElevatedButton.styleFrom(
+                                  foregroundColor: Colors.black, // Mengatur warna teks menjadi hitam
+                                ),
                                 child: const Text('Tambah bahan ke daftar belanja'),
                               ),
                             ),
@@ -352,9 +355,9 @@ class _RecipeScreenState extends State<RecipeScreen> {
                     },
                   ),
                   const SizedBox(height: 20),
-                  Text(
+                  const Text(
                     'Langkah-langkah Memasak :',
-                    style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 10),
                   FutureBuilder<List<Map<String, dynamic>>>(
@@ -416,6 +419,9 @@ class _RecipeScreenState extends State<RecipeScreen> {
             right: 20,
             child: ElevatedButton(
               onPressed: () => _toggleFavorite(context),
+              style: ElevatedButton.styleFrom(
+                foregroundColor: Colors.black, // Mengatur warna teks menjadi hitam
+              ),
               child: Text(isFavorite ? 'Hapus dari Favorit' : 'Tambah ke Favorit'),
             ),
           ),
