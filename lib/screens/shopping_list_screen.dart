@@ -133,8 +133,32 @@ class _ShoppingListScreenState extends State<ShoppingListScreen> {
                                   margin: const EdgeInsets.symmetric(vertical: 8.0),
                                   color: Colors.white,  // Set background color white
                                   child: ListTile(
-                                    title: Text(item['ingredient']),
-                                    subtitle: Text('Resep: ${item['recipe_name']}'),
+                                    title: Text(
+                                      item['ingredient'],
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.bold, // Membuat teks tebal
+                                          color: Colors.black, // Warna teks hitam
+                                        ),
+                                    ),
+                                    subtitle: RichText(
+                                      text: TextSpan(
+                                        style: const TextStyle(
+                                          color: Colors.black54, // Warna teks
+                                          fontSize: 12,
+                                        ),
+                                        children: [
+                                          const TextSpan(
+                                            text: 'Resep : ',
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                            ),
+                                          ),
+                                          TextSpan(
+                                            text: item['recipe_name'],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
                                     leading: Checkbox(
                                       value: item['is_checked'] == 1,
                                       onChanged: (bool? value) {
