@@ -205,42 +205,88 @@ class _HomeScreenState extends State<HomeScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const Text(
-              'Masukkan Pencarian :', // Label di atas input
-              style: TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-                color: Colors.black87,
-              ),
-            ),
-            const SizedBox(height: 8), // Jarak antara label dan input
-              TextField(
-                controller: _controller,
-                enabled: !isLoading,
-                decoration: InputDecoration(
-                  hintText: searchType == 'name'
-                      ? 'Misal: fried rice atau beef rendang'
-                      : 'Misal: Broccoli, eggs',
-                  border: OutlineInputBorder(),
-                  suffixIcon: IconButton(
-                    icon: const Icon(Icons.clear),
-                    onPressed: _controller.clear,
-                  ),
+                'Masukkan Pencarian :', // Label di atas input
+                style: TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black87,
                 ),
+              ),
+              const SizedBox(height: 8), // Jarak antara label dan input
+              Row(
+                children: [
+                  // Kolom input
+                  Expanded(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white, // Latar belakang putih
+                        borderRadius: BorderRadius.circular(8.0), // Sudut membulat
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Colors.black54, // Warna bayangan
+                            blurRadius: 1.0, // Radius bayangan
+                            offset: Offset(0, 2), // Posisi bayangan
+                          ),
+                        ],
+                      ),
+                      child: TextField(
+                        controller: _controller,
+                        enabled: !isLoading,
+                        decoration: InputDecoration(
+                          hintText: searchType == 'name'
+                              ? 'Misal: fried rice / rendang'
+                              : 'Misal: Broccoli, eggs',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8.0), // Sama dengan container
+                            borderSide: BorderSide.none, // Hilangkan border default
+                          ),
+                          suffixIcon: IconButton(
+                            icon: const Icon(Icons.clear),
+                            onPressed: _controller.clear,
+                          ),
+                          contentPadding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 12.0),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(width: 8), // Memberikan jarak antara input dan ikon jenis pencarian
+                  // Tombol Jenis Pencarian dengan Icon di sebelah kanan
+                  Container(
+                    decoration: BoxDecoration(
+                      color: Colors.white, // Latar belakang putih
+                      borderRadius: BorderRadius.circular(30.15),
+                      border: Border.all(
+                        color: Colors.black, // Garis pinggir hitam
+                      ),
+                    ),
+                    child: IconButton(
+                      onPressed: _showSearchTypeDialog,
+                      icon: const Icon(Icons.search), // Ikon untuk jenis pencarian
+                      color: Colors.black,
+                      iconSize: 20.0, // Ukuran ikon lebih kecil
+                    ),
+                  ),
+                ],
               ),
               const SizedBox(height: 16),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MainAxisAlignment.end, // Menyusun widget di sebelah kanan
                 children: [
-                  ElevatedButton(
-                    onPressed: _showSearchTypeDialog,
-                    child: const Text('Jenis Pencarian'),
-                  ),
+                  // Tombol Cari
                   ElevatedButton(
                     onPressed: isLoading ? null : _searchRecipes,
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.black, // Mengatur warna teks menjadi hitam
+                    ),
                     child: const Text('Cari'),
                   ),
+                  const SizedBox(width: 8), // Memberikan jarak antara tombol Cari dan Reset
+                  // Tombol Reset
                   ElevatedButton(
                     onPressed: _resetRecipes,
+                    style: ElevatedButton.styleFrom(
+                      foregroundColor: Colors.black, // Mengatur warna teks menjadi hitam
+                    ),
                     child: const Text('Reset'),
                   ),
                 ],
@@ -264,7 +310,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
           ),
         ),
-      ),
+      )
     );
   }
 }
