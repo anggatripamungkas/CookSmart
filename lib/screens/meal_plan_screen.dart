@@ -136,6 +136,9 @@ class _MealPlanScreenState extends State<MealPlanScreen> {
               onPressed: () {
                 Navigator.pop(context); // Menutup dialog tanpa menyimpan
               },
+              style: ElevatedButton.styleFrom(
+                foregroundColor: Colors.black, // Mengatur warna teks menjadi hitam
+              ),
               child: const Text('Batal'),
             ),
             ElevatedButton(
@@ -197,6 +200,9 @@ class _MealPlanScreenState extends State<MealPlanScreen> {
                   );
                 }
               },
+              style: ElevatedButton.styleFrom(
+                foregroundColor: Colors.black, // Mengatur warna teks menjadi hitam
+              ),
               child: const Text('Tambah'),
             ),
           ],
@@ -247,10 +253,10 @@ class _MealPlanScreenState extends State<MealPlanScreen> {
         ),
         elevation: 4.0,
         flexibleSpace: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             border: Border(
               bottom: BorderSide(
-                color: const Color.fromARGB(255, 0, 242, 255),
+                color: Color.fromARGB(255, 0, 242, 255),
                 width: 3.0,
               ),
             ),
